@@ -10,16 +10,53 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textSize="20dp"
+        android:layout_toLeftOf="@+id/editButton"
+        android:layout_alignBottom="@+id/editButton"
+        android:gravity="center_vertical"
+        android:visibility="visible"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/taskEditText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp"
+        android:layout_toLeftOf="@+id/editButton"
+        android:layout_alignBottom="@+id/editButton"
+        android:gravity="center_vertical"
+        android:visibility="gone"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/editButton"
+        android:onClick="onEditClick"
+        android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/doneButton"
-        android:layout_alignBottom="@+id/doneButton"
-        android:gravity="center_vertical" />
+        android:layout_toStartOf="@+id/doneButton"
+        android:visibility="visible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/updateButton"
+        android:onClick="onupdateClick"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/doneButton"
+        android:layout_toStartOf="@+id/doneButton"
+        android:visibility="gone"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
         android:id="@+id/doneButton"
-        android:onClick="onDoneButtonClick"
+        android:onClick="onDeleteClick"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

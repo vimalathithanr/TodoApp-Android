@@ -3,7 +3,7 @@ package com.example.vimalathithan.todo;
 import android.provider.BaseColumns;
 
 /**
- * Created by vimalathithan on 11/21/2015.
+ * Created by vimalathithan on 11/23/2015.
  */
 public class TaskContract {
     public static final String DB_NAME = "com.example.TodoList.db.tasks";
