@@ -8,17 +8,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.util.List;
 
-public class MainActivity extends ListActivity {
+
+public class MainActivity extends AppCompatActivity {
 
     private ListAdapter listAdapter;
     private TaskHelper helper;
@@ -28,20 +32,6 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         updateUI();
-
-//        SQLiteDatabase sqlDB = new TaskHelper(this).getWritableDatabase();
-//        Cursor cursor = sqlDB.query(TaskContract.TABLE,
-//                new String[]{TaskContract.Columns.TASK},
-//                null,null,null,null,null);
-//
-//        cursor.moveToFirst();
-//        while(cursor.moveToNext()) {
-//            Log.d("MainActivity cursor",
-//                    cursor.getString(
-//                            cursor.getColumnIndexOrThrow(
-//                                    TaskContract.Columns.TASK)));
-//        }
-
     }
 
 
@@ -106,7 +96,8 @@ public class MainActivity extends ListActivity {
                 0
         );
 
-        this.setListAdapter(listAdapter);
+        ListView lv = (ListView) findViewById(R.id.list);
+        lv.setAdapter(listAdapter);
     }
 
     public void onDoneButtonClick(View view) {
