@@ -151,9 +151,10 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.clear();
         values.put(TaskContract.Columns.TASK, newTask);
-        Log.d(oldTask, newTask);
 
-        db.update(TaskContract.TABLE, values, "TASK="+oldTask, null);
+        String[] args = new String[]{oldTask};
+
+        db.update(TaskContract.TABLE, values, "task=?", args);
 
         taskTextView.setVisibility(View.VISIBLE);
         taskEditView.setVisibility(View.GONE);
