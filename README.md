@@ -19,10 +19,6 @@ The following **optional** features are implemented:
 * [ ] Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
 * [ ] Improve style of the todo items in the list [using a custom adapter](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView)
 
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
-
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
