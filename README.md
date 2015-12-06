@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
-![alt tag](http://postimg.org/image/yx6w6lp13/)
+![alt tag](https://github.com/vimalathithanr/TodoApp-Android/blob/master/todo-new.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
