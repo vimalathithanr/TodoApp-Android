@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,35 +30,38 @@
         android:gravity="center_vertical"
         android:visibility="gone"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:text="Edit"
         android:id="@+id/editButton"
         android:onClick="onEditClick"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/doneButton"
-        android:layout_toStartOf="@+id/doneButton"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:src="@drawable/edit_image" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:text="Update"
         android:id="@+id/updateButton"
         android:onClick="onupdateClick"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/doneButton"
         android:layout_toStartOf="@+id/doneButton"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:src="@drawable/update_image"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:text="Done"
         android:id="@+id/doneButton"
         android:onClick="onDeleteClick"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/done_image"/>
+
 </RelativeLayout>

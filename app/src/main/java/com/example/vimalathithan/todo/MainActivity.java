@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -125,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
         taskEditView.setVisibility(View.VISIBLE);
         taskEditView.setText(oldTask, TextView.BufferType.EDITABLE);
 
-        Button editButton = (Button) v.findViewById(R.id.editButton);
-        Button updateButton = (Button) v.findViewById(R.id.updateButton);
+        ImageButton editButton = (ImageButton) v.findViewById(R.id.editButton);
+        ImageButton updateButton = (ImageButton) v.findViewById(R.id.updateButton);
 
         editButton.setVisibility(View.INVISIBLE);
         updateButton.setVisibility(View.VISIBLE);
@@ -140,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
         TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
         EditText taskEditView = (EditText) v.findViewById(R.id.taskEditText);
 
-        Button editButton = (Button) v.findViewById(R.id.editButton);
-        Button updateButton = (Button) v.findViewById(R.id.updateButton);
+        ImageButton editButton = (ImageButton) v.findViewById(R.id.editButton);
+        ImageButton updateButton = (ImageButton) v.findViewById(R.id.updateButton);
 
         String newTask = taskEditView.getText().toString();
 
