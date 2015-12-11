@@ -56,13 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         String task = inputField.getText().toString();
 
                         helper = new TaskHelper(MainActivity.this);
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        ContentValues values = new ContentValues();
-
-                        values.clear();
-                        values.put(TaskContract.Columns.TASK,task);
-
-                        db.insertWithOnConflict(TaskContract.TABLE,null,values,SQLiteDatabase.CONFLICT_IGNORE);
+                        helper.onInsert(task);
                         updateUI();
                     }
                 });
@@ -102,15 +96,9 @@ public class MainActivity extends AppCompatActivity {
         TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
         String task = taskTextView.getText().toString();
 
-        String sql = String.format("DELETE FROM %s WHERE %s = '%s'",
-                TaskContract.TABLE,
-                TaskContract.Columns.TASK,
-                task);
-
-
         helper = new TaskHelper(MainActivity.this);
-        SQLiteDatabase sqlDB = helper.getWritableDatabase();
-        sqlDB.execSQL(sql);
+        helper.onDelete(task);
+
         updateUI();
     }
 
@@ -147,15 +135,18 @@ public class MainActivity extends AppCompatActivity {
         String newTask = taskEditView.getText().toString();
 
         helper = new TaskHelper(MainActivity.this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        helper.onUpdate(oldTask, newTask);
 
-        ContentValues values = new ContentValues();
-        values.clear();
-        values.put(TaskContract.Columns.TASK, newTask);
-
-        String[] args = new String[]{oldTask};
-
-        db.update(TaskContract.TABLE, values, "task=?", args);
+//        helper = new TaskHelper(MainActivity.this);
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//
+//        ContentValues values = new ContentValues();
+//        values.clear();
+//        values.put(TaskContract.Columns.TASK, newTask);
+//
+//        String[] args = new String[]{oldTask};
+//
+//        db.update(TaskContract.TABLE, values, "task=?", args);
 
         taskTextView.setVisibility(View.VISIBLE);
         taskEditView.setVisibility(View.GONE);
