@@ -23,6 +23,6 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://github.com/vimalathithanr/TodoApp-Android/blob/master/todo-new.gif)
+![](https://github.com/vimalathithanr/TodoApp-Android/blob/master/todo_new_demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
