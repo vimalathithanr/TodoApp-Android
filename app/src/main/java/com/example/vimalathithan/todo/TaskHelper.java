@@ -41,6 +41,7 @@ public class TaskHelper extends SQLiteOpenHelper {
         values.put(TaskContract.Columns.TASK, task);
         values.put(TaskContract.Columns.PRIORITY, priority);
         db.insertWithOnConflict(TaskContract.TABLE, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        db.close();
     }
 
     public void onDelete(String task){
@@ -64,5 +65,6 @@ public class TaskHelper extends SQLiteOpenHelper {
         String[] args = new String[]{oldTask};
 
         db.update(TaskContract.TABLE, values, "task=?", args);
+        db.close();
     }
 }

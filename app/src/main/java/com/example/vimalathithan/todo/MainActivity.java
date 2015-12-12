@@ -27,13 +27,33 @@ import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private ListAdapter listAdapter;
     private TaskHelper helper;
-    private ListView mainListView;
-    private boolean normalFlow = true;
+    private View formElementsView;
+
     private String oldTask = null;
     private String oldPriority = null;
+    private String newTask = null;
+    private String priority = null;
+    private String task = null;
+
+    private EditText nameEditText;
+    private EditText taskEditView;
+
+    private int selectedId;
+
+    private TextView taskTextView;
+    private TextView staticPriorityTextView;
+    private TextView priorityTextView;
+
+    private RadioButton selectedRadioButton;
+    private RadioGroup priorityRadioGroup;
+    private RadioButton highPriority;
+    private RadioButton mediumPriority;
+    private RadioButton lowPriority;
+
+    private ImageButton editButton;
+    private ImageButton updateButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_add_task:
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                final View formElementsView = inflater.inflate(R.layout.dialog_form,
+                formElementsView = inflater.inflate(R.layout.dialog_form,
                         null, false);
 
-                final RadioGroup priorityRadioGroup = (RadioGroup) formElementsView
+                priorityRadioGroup = (RadioGroup) formElementsView
                         .findViewById(R.id.priorityRadioGroup);
 
-                final EditText nameEditText = (EditText) formElementsView
+                nameEditText = (EditText) formElementsView
                         .findViewById(R.id.taskEditText);
 
                 new AlertDialog.Builder(MainActivity.this).setView(formElementsView)
@@ -69,15 +89,12 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
-                                String task = nameEditText.getText().toString();
+                                task = nameEditText.getText().toString();
 
-                                int selectedId = priorityRadioGroup
+                                selectedId = priorityRadioGroup
                                         .getCheckedRadioButtonId();
-                                RadioButton selectedRadioButton = (RadioButton) formElementsView
+                                selectedRadioButton = (RadioButton) formElementsView
                                         .findViewById(selectedId);
-
-
-                                String priority = null;
 
                                 if (selectedRadioButton.getText().toString() != null)
                                     priority = selectedRadioButton.getText().toString();
@@ -118,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onDeleteClick(View view) {
         View v = (View) view.getParent();
-        TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
-        String task = taskTextView.getText().toString();
+        taskTextView = (TextView) v.findViewById(R.id.taskTextView);
+        task = taskTextView.getText().toString();
 
         helper = new TaskHelper(MainActivity.this);
         helper.onDelete(task);
@@ -130,15 +147,15 @@ public class MainActivity extends AppCompatActivity {
     public void onEditClick(View view) {
         View v = (View) view.getParent();
 
-        TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
-        TextView staticPriorityTextView = (TextView) v.findViewById(R.id.staticPriority);
-        TextView priorityTextView = (TextView) v.findViewById(R.id.priorityTextView);
-        EditText taskEditView = (EditText) v.findViewById(R.id.taskEditText);
-        RadioGroup taskRadiogroup = (RadioGroup) v.findViewById(R.id.priorityRadioGroup);
+        taskTextView = (TextView) v.findViewById(R.id.taskTextView);
+        staticPriorityTextView = (TextView) v.findViewById(R.id.staticPriority);
+        priorityTextView = (TextView) v.findViewById(R.id.priorityTextView);
+        taskEditView = (EditText) v.findViewById(R.id.taskEditText);
+        priorityRadioGroup = (RadioGroup) v.findViewById(R.id.priorityRadioGroup);
 
-        RadioButton highPriority = (RadioButton) v.findViewById(R.id.highRadioButton);
-        RadioButton mediumPriority = (RadioButton) v.findViewById(R.id.mediumRadioButton);
-        RadioButton lowPriority = (RadioButton) v.findViewById(R.id.lowRadioButton);
+        highPriority = (RadioButton) v.findViewById(R.id.highRadioButton);
+        mediumPriority = (RadioButton) v.findViewById(R.id.mediumRadioButton);
+        lowPriority = (RadioButton) v.findViewById(R.id.lowRadioButton);
 
         oldPriority = priorityTextView.getText().toString();
 
@@ -156,11 +173,12 @@ public class MainActivity extends AppCompatActivity {
 
         taskTextView.setVisibility(View.GONE);
         taskEditView.setVisibility(View.VISIBLE);
-        taskRadiogroup.setVisibility(View.VISIBLE);
+
+        priorityRadioGroup.setVisibility(View.VISIBLE);
         taskEditView.setText(oldTask, TextView.BufferType.EDITABLE);
 
-        ImageButton editButton = (ImageButton) v.findViewById(R.id.editButton);
-        ImageButton updateButton = (ImageButton) v.findViewById(R.id.updateButton);
+        editButton = (ImageButton) v.findViewById(R.id.editButton);
+        updateButton = (ImageButton) v.findViewById(R.id.updateButton);
 
         editButton.setVisibility(View.INVISIBLE);
         updateButton.setVisibility(View.VISIBLE);
@@ -171,23 +189,23 @@ public class MainActivity extends AppCompatActivity {
 
         View v = (View) view.getParent();
 
-        final RadioGroup priorityRadioGroup = (RadioGroup) v.findViewById(R.id.priorityRadioGroup);
-        int selectedId = priorityRadioGroup
+        priorityRadioGroup = (RadioGroup) v.findViewById(R.id.priorityRadioGroup);
+        selectedId = priorityRadioGroup
                 .getCheckedRadioButtonId();
-        RadioButton selectedRadioButton = (RadioButton) v.findViewById(selectedId);
+        selectedRadioButton = (RadioButton) v.findViewById(selectedId);
 
-        String priority = null;
+        priority = null;
 
         if (selectedRadioButton.getText().toString() != null)
             priority = selectedRadioButton.getText().toString();
 
-        TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
-        EditText taskEditView = (EditText) v.findViewById(R.id.taskEditText);
+        taskTextView = (TextView) v.findViewById(R.id.taskTextView);
+        taskEditView = (EditText) v.findViewById(R.id.taskEditText);
 
-        ImageButton editButton = (ImageButton) v.findViewById(R.id.editButton);
-        ImageButton updateButton = (ImageButton) v.findViewById(R.id.updateButton);
+        editButton = (ImageButton) v.findViewById(R.id.editButton);
+        updateButton = (ImageButton) v.findViewById(R.id.updateButton);
 
-        String newTask = taskEditView.getText().toString();
+        newTask = taskEditView.getText().toString();
 
         helper = new TaskHelper(MainActivity.this);
         helper.onUpdate(oldTask, newTask, priority);
