@@ -1,67 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/taskTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp"
-        android:layout_toLeftOf="@+id/editButton"
-        android:layout_alignBottom="@+id/editButton"
-        android:gravity="center_vertical"
-        android:visibility="visible"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/taskEditText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp"
-        android:layout_toLeftOf="@+id/editButton"
-        android:layout_alignBottom="@+id/editButton"
-        android:gravity="center_vertical"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/taskTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/editButton"
+            android:textColor="#10bcc9"
+            android:gravity="center_vertical"
+            android:text="New Text"
+            android:textSize="20dp"
+            android:visibility="visible" />
 
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:text="Edit"
-        android:id="@+id/editButton"
-        android:onClick="onEditClick"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/doneButton"
-        android:visibility="visible"
-        android:src="@drawable/edit_image" />
+        <EditText
+            android:id="@+id/taskEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/editButton"
+            android:gravity="center_vertical"
+            android:text="New Text"
+            android:textSize="20dp"
+            android:visibility="gone" />
 
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:text="Update"
-        android:id="@+id/updateButton"
-        android:onClick="onupdateClick"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/doneButton"
-        android:layout_toStartOf="@+id/doneButton"
-        android:visibility="gone"
-        android:src="@drawable/update_image"/>
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/doneButton"
+            android:onClick="onEditClick"
+            android:src="@drawable/edit_image"
+            android:text="Edit"
+            android:visibility="visible" />
 
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:text="Done"
-        android:id="@+id/doneButton"
-        android:onClick="onDeleteClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/done_image"/>
+        <ImageButton
+            android:id="@+id/updateButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/doneButton"
+            android:layout_toStartOf="@+id/doneButton"
+            android:onClick="onupdateClick"
+            android:src="@drawable/update_image"
+            android:text="Update"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/doneButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="onDeleteClick"
+            android:src="@drawable/done_image"
+            android:text="Done" />
+
+
+        <TextView
+            android:id="@+id/priorityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taskTextView"
+            android:layout_toRightOf="@+id/staticPriority"
+            android:textColor="#10bcc9"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/staticPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority:  "
+            android:textSize="20dp"
+            android:visibility="visible"
+            android:layout_below="@+id/taskTextView"
+            android:layout_toRightOf="@+id/taskEditText"
+            android:layout_toEndOf="@+id/taskEditText" />
+
+        <RadioGroup
+            android:id="@+id/priorityRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/doneButton"
+            android:layout_toLeftOf="@+id/staticPriority"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <RadioButton
+                android:id="@+id/highRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="High" />
+
+
+            <RadioButton
+                android:id="@+id/mediumRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/highRadioButton"
+                android:text="Medium" />
+
+            <RadioButton
+                android:id="@+id/lowRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/mediumRadioButton"
+                android:text="Low" />
+
+        </RadioGroup>
 
 </RelativeLayout>

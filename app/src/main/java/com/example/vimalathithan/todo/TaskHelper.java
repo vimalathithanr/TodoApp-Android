@@ -20,8 +20,8 @@ public class TaskHelper extends SQLiteOpenHelper {
         String sqlQuery =
                 String.format("CREATE TABLE %s (" +
                                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                "%s TEXT)", TaskContract.TABLE,
-                        TaskContract.Columns.TASK);
+                                "%s TEXT," + "%s TEXT)", TaskContract.TABLE,
+                        TaskContract.Columns.TASK, TaskContract.Columns.PRIORITY);
 
         Log.d("TaskDBHelper", "Query to form table: " + sqlQuery);
         sqlDB.execSQL(sqlQuery);
@@ -33,13 +33,13 @@ public class TaskHelper extends SQLiteOpenHelper {
         onCreate(sqlDB);
     }
 
-    public void onInsert(String task){
+    public void onInsert(String task, String priority){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.clear();
         values.put(TaskContract.Columns.TASK, task);
-
+        values.put(TaskContract.Columns.PRIORITY, priority);
         db.insertWithOnConflict(TaskContract.TABLE, null, values, SQLiteDatabase.CONFLICT_IGNORE);
     }
 
@@ -53,12 +53,13 @@ public class TaskHelper extends SQLiteOpenHelper {
         sqlDB.execSQL(sql);
     }
 
-    public void onUpdate(String oldTask, String newTask){
+    public void onUpdate(String oldTask, String newTask, String priority){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.clear();
         values.put(TaskContract.Columns.TASK, newTask);
+        values.put(TaskContract.Columns.PRIORITY, priority);
 
         String[] args = new String[]{oldTask};
 
